@@ -118,6 +118,28 @@ def translate_to_pirate_talk(phrase):
         'me swabbie be not a man!'
     """
 
+    translation_words = { "sir": "matey",
+                        "hotel": "fleabag inn",
+                        "students": "swabbies",
+                        "student": "swabbie",
+                        "man": "matey",
+                        "professor": "fould blaggart",
+                        "restaurant": "galley",
+                        "your": "yer",
+                        "excuse": "arr",
+                        "are": "be",
+                        "restroom": "head",
+                        "my": "me",
+                        "is": "be"
+                        }
+ 
+    for key in translation_words:
+        phrase = phrase.replace(key, translation_words[key])
+
+
+    return phrase
+
+
 
 def kids_game(names):
     """Play a kids' word chain game.
