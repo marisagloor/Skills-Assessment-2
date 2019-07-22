@@ -29,12 +29,17 @@ def count_words(phrase):
         >>> print_dict(count_words("Porcupine see, porcupine do."))
         {'Porcupine': 1, 'do.': 1, 'porcupine': 1, 'see,': 1}
     """
+
+    # separates phrase
     words = phrase.split(" ")
     words_counts = defaultdict(int)
 
+    # incrementing for word occurences 
+    # first occurence of a word defaults to equal 0
     for word in words:
         words_counts[word] += 1
 
+    # returns words_counts as a regular dictionary
     return dict(words_counts)
 
 
@@ -63,6 +68,7 @@ def print_melon_at_price(price):
         >>> print_melon_at_price(5.50)
         None found
     """
+
     melon_prices = {2.50: ["Honeydew", "Cantaloupe"],
                     2.95: ["Watermelon"],
                     3.25: ["Musk", "Crenshaw"],
@@ -134,11 +140,21 @@ def translate_to_pirate_talk(phrase):
                         }
  
 
-    for key in translation_words:
-        phrase = phrase.replace(key, translation_words[key])
+    # for key in translation_words:
+    #     phrase = phrase.replace(key, translation_words[key])
+    # ^
+    # Could potentially replace parts of words with pirate
+
+    new_phrase = ''
+    words = phrase.split(" ")
+    for word in words:
+        if word in translation_words:
+            new_phrase += translation_words[word] + " "
+        else:
+            new_phrase += word + " "
 
 
-    return phrase
+    return new_phrase
 
 
 
@@ -207,7 +223,7 @@ def kids_game(names):
 
     return results
 
-
+# test for kids game
 print(kids_game(["bagon", "baltoy", "yamask", "starly", "nosepass", 
         "kalob", "nicky", "booger"]))
 print(kids_game(["apple", "berry", "cherry"]))
