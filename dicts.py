@@ -133,6 +133,7 @@ def translate_to_pirate_talk(phrase):
                         "is": "be"
                         }
  
+
     for key in translation_words:
         phrase = phrase.replace(key, translation_words[key])
 
@@ -186,3 +187,34 @@ def kids_game(names):
     a dictionary (with the super-fast lookup they provide) can help;
     good solutions here will definitely require a dictionary.
     """
+
+    word_starters = defaultdict(list)
+    results = []
+    for name in names:
+        word_starters[name[0]].append(name)
+
+    first_word_starter = names[0][0]
+    results.append(word_starters[first_word_starter].pop(0))
+    # must be popped from dictionary's list so it won't be called later
+
+    while True:
+        game_letter = results[-1][-1]
+        if not game_letter in word_starters or 0 == len(word_starters[game_letter]):
+            break
+        else:
+            results.append(word_starters[game_letter].pop(0))
+
+
+    return results
+
+
+print(kids_game(["bagon", "baltoy", "yamask", "starly", "nosepass", 
+        "kalob", "nicky", "booger"]))
+print(kids_game(["apple", "berry", "cherry"]))
+print(kids_game(["noon", "naan", "nun"]))
+
+
+
+
+
+
