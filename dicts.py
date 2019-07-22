@@ -3,7 +3,7 @@
 **IMPORTANT:** These problems are meant to be solved using
 dictionaries and sets.
 """
-
+from collections import defaultdict
 
 def count_words(phrase):
     """Count unique words in a string.
@@ -29,6 +29,17 @@ def count_words(phrase):
         >>> print_dict(count_words("Porcupine see, porcupine do."))
         {'Porcupine': 1, 'do.': 1, 'porcupine': 1, 'see,': 1}
     """
+    words = phrase.split(" ")
+    words_counts = defaultdict(int)
+
+    for word in words:
+        words_counts[word] += 1
+
+    return dict(words_counts)
+
+
+
+
 
 
 def print_melon_at_price(price):
