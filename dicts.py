@@ -38,10 +38,6 @@ def count_words(phrase):
     return dict(words_counts)
 
 
-
-
-
-
 def print_melon_at_price(price):
     """Given a price, print all melons available at that price, in alphabetical order.
 
@@ -67,6 +63,20 @@ def print_melon_at_price(price):
         >>> print_melon_at_price(5.50)
         None found
     """
+    melon_prices = {2.50: ["Honeydew", "Cantaloupe"],
+                    2.95: ["Watermelon"],
+                    3.25: ["Musk", "Crenshaw"],
+                    14.25: ["Christmas"]
+                    }
+
+    if price in melon_prices:
+        melon_prices[price].sort()
+        for melon in melon_prices[price]:
+            print(melon)
+    else:
+        print("None found")
+
+
 
 
 def translate_to_pirate_talk(phrase):
