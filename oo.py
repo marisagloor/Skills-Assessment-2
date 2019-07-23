@@ -6,6 +6,10 @@
    can provide? Explain each concept.
    -Easily organizing things into groups and subgroups while keeping them connected
    -Easy to change attributes of values
+
+    Not really a benefit exclusive to OO -- you can easily change values in
+    dicts and lists as well.
+
    -Functions (methods) that apply to specific types of objects
 
 2. What is a class?
@@ -17,6 +21,7 @@
 4. What is an instance in object orientation?
 -an instantiated object of a class - has class atributes and 
 access to class methods
+- don't forget instance attributes
 
 5. How is a class attribute different than an instance attribute?
    Give an example of when you might use each.
@@ -93,15 +98,3 @@ class Library():
         # for testing code
         for book in books:
             print(book.title, book.author)
-
-
-
-
-
-
-
-
-
-
-
-

@@ -40,7 +40,8 @@ def count_words(phrase):
         words_counts[word] += 1
 
     # returns words_counts as a regular dictionary
-    return dict(words_counts)
+    # It's ok to return the defaultdict since defaultdict inhertis from dict
+    return words_counts
 
 
 def print_melon_at_price(price):
@@ -76,8 +77,7 @@ def print_melon_at_price(price):
                     }
 
     if price in melon_prices:
-        melon_prices[price].sort()
-        for melon in melon_prices[price]:
+        for melon in sorted(melon_prices[price]):
             print(melon)
     else:
         print("None found")
@@ -145,17 +145,12 @@ def translate_to_pirate_talk(phrase):
     # ^
     # Could potentially replace parts of words with pirate
 
-    new_phrase = ''
+    new_phrase = []
     words = phrase.split(" ")
     for word in words:
-        if word in translation_words:
-            new_phrase += translation_words[word] + " "
-        else:
-            new_phrase += word + " "
+        new_phrase += translation_words.get(word, word)
 
-
-    return new_phrase
-
+    return "".join(new_phrase)
 
 
 def kids_game(names):
@@ -205,12 +200,10 @@ def kids_game(names):
     """
 
     word_starters = defaultdict(list)
-    results = []
+    results = [word_starters.pop(0)]
     for name in names:
         word_starters[name[0]].append(name)
 
-    first_word_starter = names[0][0]
-    results.append(word_starters[first_word_starter].pop(0))
     # must be popped from dictionary's list so it won't be called later
 
     while True:
@@ -218,7 +211,7 @@ def kids_game(names):
         if not game_letter in word_starters or 0 == len(word_starters[game_letter]):
             break
         else:
-            results.append(word_starters[game_letter].pop(0))
+            results.append(word_starters[game_letter].pop())
 
 
     return results
